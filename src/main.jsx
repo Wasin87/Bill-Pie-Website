@@ -8,7 +8,7 @@ import Home from './components/Home/Home.jsx';
 import Register from './components/Register/Register.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
  
- 
+import { ToastContainer } from "react-toastify";
 import AllBills from './components/All Bills/AllBills.jsx';
 import MyPayBill from './components/MYPayBill/MyPayBill.jsx';
 import Login from './components/Pages/Login.jsx';
@@ -51,6 +51,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <RouterProvider router={router} />
+      <ToastContainer />
     </AuthProvider>
   </StrictMode>
 );

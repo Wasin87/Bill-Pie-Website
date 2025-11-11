@@ -1,5 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllBills = () => {
   const [billsData, setBillsData] = useState([]);
@@ -7,6 +10,8 @@ const AllBills = () => {
   const [activeCategory, setActiveCategory] = useState("");
   const [loading, setLoading] = useState(true);
   const [filtering, setFiltering] = useState(false);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLoading(true);
@@ -49,26 +54,38 @@ const AllBills = () => {
     setTimeout(() => setFiltering(false), 300);
   };
 
-  // ✅ Pay Bill Handler
   const handlePayBill = (bill) => {
-    const payData = {
-      title: bill.title,
-      category: bill.category,
-      amount: bill.amount,
-      image: bill.image,
-      location: bill.location,
-      description: bill.description,
-      date: bill.date,
-    };
+    if (!user) {
+      toast.warn("Please login to pay the bill!", { position: "top-center" });
+      navigate("/login", { state: { fromBill: bill } }); // go to login with bill info
+      return;
+    }
 
-    fetch("http://localhost:3000/payBill", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payData),
-    })
-      .then((res) => res.json())
-      .then(() => alert("✅ Bill Paid Successfully!"))
-      .catch((err) => console.error("Error saving bill:", err));
+    // ✅ Show confirmation popup
+    if (window.confirm("Are you sure you want to pay this bill?")) {
+      const payData = {
+        title: bill.title,
+        category: bill.category,
+        amount: bill.amount,
+        image: bill.image,
+        location: bill.location,
+        description: bill.description,
+        date: bill.date,
+      };
+
+      fetch("http://localhost:3000/payBill", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payData),
+      })
+        .then((res) => res.json())
+        .then(() =>
+          toast.success("✅ Bill Paid Successfully!", {
+            position: "top-center",
+          })
+        )
+        .catch((err) => console.error("Error saving bill:", err));
+    }
   };
 
   return (
@@ -80,6 +97,7 @@ const AllBills = () => {
         <p>Browse and manage all available utility bills</p>
       </div>
 
+      {/* ✅ Category + Search */}
       <div className="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
         <div className="flex gap-2 flex-wrap justify-center md:justify-start">
           {categories.map((cat) => (
@@ -108,6 +126,7 @@ const AllBills = () => {
         </div>
       </div>
 
+      {/* ✅ Loader */}
       {(loading || filtering) ? (
         <div className="flex justify-center items-center mt-10">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-amber-500 border-b-4"></div>
@@ -119,7 +138,7 @@ const AllBills = () => {
               filteredBills.map((bill) => (
                 <div
                   key={bill._id}
-                  className="border border-gray-200 rounded-2xl shadow-md p-4 w-full max-w-md h-[450px] flex flex-col justify-between bg-amber-50 hover:shadow-lg transition-transform duration-300 hover:-translate-y-2 dark:bg-gray-800"
+                  className="border border-gray-200 rounded-2xl shadow-md p-4 w-full max-w-md h-[420px] flex flex-col justify-between bg-amber-50 hover:shadow-lg transition-transform duration-300 hover:-translate-y-2 dark:bg-gray-800"
                 >
                   <div>
                     <img
@@ -135,17 +154,23 @@ const AllBills = () => {
                         {bill.category}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-1 dark:text-gray-50">{bill.location}</p>
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-2 dark:text-gray-50">
-                      {bill.description}
-                    </p>
+ 
                     <div className="flex justify-between items-center mt-3">
                       <p className="text-gray-700 font-semibold text-sm dark:text-gray-50">
                         Amount: ৳{bill.amount}
                       </p>
-                      <p className="text-gray-500 text-xs dark:text-gray-50">{bill.date}</p>
+                      <p className="text-gray-500 text-xs dark:text-gray-50">
+                        {bill.date}
+                      </p>
                     </div>
                   </div>
+
+            {/* See details */}
+                <a className="flex justify-between items-center text-gray-800 dark:text-gray-200 hover:text-amber-600 hover:underline transition-colors duration-300 m-auto">
+                   See details
+                </a>
+                
+
                   <div className="flex justify-center mt-4">
                     <button
                       onClick={() => handlePayBill(bill)}

@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 import logo from "../../assets/logo.png";
 import { FaMoon, FaSun, FaBars } from "react-icons/fa";
+import Swal from "sweetalert2"; // ✅ SweetAlert import
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -18,7 +19,30 @@ const Navbar = () => {
 
   const handleThemeToggle = () => setTheme(prev => (prev === "winter" ? "night" : "winter"));
 
-  const handleSignOut = () => signOutUser().catch(console.error);
+  // ✅ SweetAlert Sign Out
+  const handleSignOut = () => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You will be signed out!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Sign Out!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOutUser()
+          .then(() => {
+            Swal.fire('Signed Out!', 'You have successfully signed out.', 'success');
+          })
+          .catch((err) => {
+            console.error(err);
+            Swal.fire('Error!', 'Something went wrong.', 'error');
+          });
+      }
+    });
+  };
 
   const navLinkClass = ({ isActive }) =>
     isActive
@@ -97,7 +121,7 @@ const Navbar = () => {
                 </span>
               </Link>
               <button
-                onClick={handleSignOut}
+                onClick={handleSignOut} // ✅ SweetAlert applied
                 className="btn btn-sm border border-amber-800 bg-amber-700 dark:bg-amber-600 text-white hover:bg-amber-700 transition"
               >
                 Sign Out

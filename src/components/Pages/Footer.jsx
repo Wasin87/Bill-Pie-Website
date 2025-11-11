@@ -38,6 +38,8 @@ const Footer = () => {
         <a className="link link-hover">Privacy policy</a>
         <a className="link link-hover">Cookie policy</a>
       </nav>
+
+
     </footer>
   );
 };
