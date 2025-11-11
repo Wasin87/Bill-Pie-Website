@@ -84,23 +84,23 @@ const Register = () => {
   };
 
   return (
-    <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 bg-amber-100 dark:bg-gray-700 dark:text-gray-200">
+    <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-amber-100 dark:bg-gray-700 dark:text-white">
       <h1 className="text-3xl font-bold text-center mt-5">Register now!</h1>
       <form onSubmit={handleRegister} className="card-body">
         <fieldset className="fieldset">
-          <label className="label mt-3 text-white">Your Name</label>
-          <input type="text" name="name" className="input rounded-xl bg-gray-500" placeholder='Enter your name' required />
+          <label className="label mt-3 text-black dark:text-white ">Your Name</label>
+          <input type="text" name="name" className="input rounded-xl dark:bg-gray-500" placeholder='Enter your name' required />
           {nameError && <p className="text-xs text-error mt-1">{nameError}</p>}
 
-          <label className="label text-white">Photo URL</label>
-          <input type="text" name="photo" className="input rounded-xl bg-gray-500" placeholder='Enter photo URL' required />
+          <label className="label text-black dark:text-white ">Photo URL</label>
+          <input type="text" name="photo" className="input rounded-xl dark:bg-gray-500" placeholder='Enter photo URL' required />
           {photoError && <p className="text-xs text-error mt-1">{photoError}</p>}
 
-          <label className="label text-white">Email</label>
-          <input type="email" name="email" className="input rounded-xl bg-gray-500" placeholder='Enter yor email' required />
+          <label className="label text-black dark:text-white ">Email</label>
+          <input type="email" name="email" className="input rounded-xl dark:bg-gray-500" placeholder='Enter yor email' required />
 
-          <label className="label text-white">Password</label>
-          <input type="password" name="password" className="input rounded-xl bg-gray-500" placeholder='Password' required />
+          <label className="label text-black dark:text-white ">Password</label>
+          <input type="password" name="password" className="input rounded-xl dark:bg-gray-500" placeholder='Password' required />
 
           <div className="flex gap-2 mt-2">
             <input type="checkbox" name="term" id="term" required />

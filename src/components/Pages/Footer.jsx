@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal text-base-content p-10 bg-linear-to-r dark:from-gray-700 dark:to-amber-900 dark:text-gray-200 transition-colors duration-300">
+    <footer className="footer sm:footer-horizontal  p-10 text-black bg-linear-to-r from-amber-500 to-amber-200 dark:from-gray-700 dark:to-amber-900 dark:text-gray-200 transition-colors duration-300">
       <aside>
         <img
           className="w-15 h-15 ml-4 border border-b-amber-800 rounded-4xl bg-amber-100 p-1 dark:bg-gray-700"

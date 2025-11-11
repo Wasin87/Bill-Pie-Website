@@ -8,7 +8,7 @@ const billPromise = fetch('http://localhost:3000/recentBills')
 
 const Home = () => {
     return (
-        <div className='max-w-5xl mx-auto mt-20 mb-5'>
+        <div className='max-w-5xl mx-auto  mb-5'>
             <Banner></Banner>
             <Utilities></Utilities>
              <HomeData billPromise = {billPromise}></HomeData>

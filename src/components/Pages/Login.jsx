@@ -51,15 +51,15 @@ const Login = () => {
   };
 
   return (
-    <div className="card bg-base-100 mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 dark:bg-gray-700 dark:text-gray-200">
+    <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-amber-100 dark:bg-gray-700 dark:text-white">
       <h1 className="text-3xl font-bold text-center mt-5">Login now!</h1>
       <form onSubmit={handleLogin} className="card-body">
         <fieldset className="fieldset">
-          <label className="label text-white">Email</label>
-          <input type="email" name="email" className="input rounded-xl bg-gray-500" placeholder='Enter your email' required />
+          <label className="label text-black dark:text-white">Email</label>
+          <input type="email" name="email" className="input rounded-xl dark:bg-gray-500" placeholder='Enter your email' required />
 
-          <label className="label text-white">Password</label>
-          <input type="password" name="password" className="input rounded-xl bg-gray-500" placeholder='Password' required />
+          <label className="label text-black dark:text-white">Password</label>
+          <input type="password" name="password" className="input rounded-xl dark:bg-gray-500" placeholder='Password' required />
 
           {error && <p className="text-red-500 text-xs">{error}</p>}
 

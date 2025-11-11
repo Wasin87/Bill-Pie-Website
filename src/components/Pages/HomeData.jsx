@@ -7,7 +7,7 @@ const HomeData = ({ billPromise }) => {
 
   return (
     <div className="mt-5 px-4">
-      <div className="text-3xl font-bold flex justify-center items-center">
+      <div className="text-3xl font-bold flex justify-center items-center text-black dark:text-white">
         <h1>Recent Bills</h1>
       </div>
 
@@ -19,7 +19,7 @@ const HomeData = ({ billPromise }) => {
         {billData.map(({ _id, image, title, category, location, description, date, amount }) => (
           <div
             key={_id}
-            className="border border-gray-200 rounded-xl shadow-md p-4 w-full max-w-md h-[400px] flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 bg-amber-100 py-3 px-5 dark:bg-gray-800"
+            className="border border-gray-200 rounded-xl shadow-md p-4 w-full max-w-md h-[400px] flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2 bg-amber-50 py-3 px-5 dark:bg-gray-800"
           >
             <div>
               <img

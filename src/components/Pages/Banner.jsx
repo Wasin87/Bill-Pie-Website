@@ -39,7 +39,7 @@ const Banner = () => {
 
   return (
     <div className="relative py-10 flex flex-col items-center">
-      <h2 className="text-4xl font-bold text-center mb-8">
+      <h2 className="text-4xl font-bold text-center mb-8 text-black dark:text-white">
         ⚡Manage your available bills
       </h2>
 

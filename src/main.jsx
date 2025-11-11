@@ -12,6 +12,7 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import AllBills from './components/All Bills/AllBills.jsx';
 import MyPayBill from './components/MYPayBill/MyPayBill.jsx';
 import Login from './components/Pages/Login.jsx';
+import Profile from './components/Pages/Profile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/myPayBil',
         element: <MyPayBill></MyPayBill>
+      },
+      {
+        path: '/profile',
+        Component: Profile
       }
     ]
   }

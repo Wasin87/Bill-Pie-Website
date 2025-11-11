@@ -58,7 +58,7 @@ const AllBills = () => {
   return (
     <div className="mt-28 px-4">
       {/* Title */}
-      <div className="text-3xl font-bold flex justify-center items-center">
+      <div className="text-3xl font-bold flex justify-center items-center text-black dark:text-white">
         <h1>All Utility Bills</h1>
       </div>
       <div className="flex justify-center items-center text-gray-500 mt-2">

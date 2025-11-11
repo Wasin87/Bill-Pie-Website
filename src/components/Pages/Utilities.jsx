@@ -14,7 +14,7 @@ const Utilities = () => {
 
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center dark:text-gray-50">
+      <h2 className="text-3xl font-bold mb-8 text-center text-black dark:text-white">
         Utility Categories
       </h2>
 
