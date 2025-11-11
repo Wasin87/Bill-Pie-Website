@@ -1,67 +1,124 @@
-import React, { use } from 'react';
-import { NavLink } from 'react-router';
-import { AuthContext } from '../../Context/AuthContext';
-import { Link } from 'react-router';
-import logo from '../../assets/logo.png';
+import React, { useContext, useState, useEffect } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
+import logo from "../../assets/logo.png";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+  const [darkMode, setDarkMode] = useState(false);
 
-     const {user, signOutUser } = use(AuthContext);
-
-     const handleSignOut = () => {
-        signOutUser()
-          .then()
-          .catch()
-     }
-
-    const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/allProducts">Bills</NavLink></li>
-        
-        {
-            user && <>
-             
-             <li><NavLink to="/myBids">My Pay Bills</NavLink></li>
-            </>
-        }
-        
-    </>
-
-    return (
-<div className="navbar bg-base-100 shadow-sm px-10">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-      </div>
-      <ul
-        tabIndex="-1"
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-           {links }
-      </ul>
-    </div>
-    <div className='flex'>
-        <img  className='w-12 h-12 border border-b-amber-800 rounded-4xl bg-amber-100 p-1' src={logo} alt="" />
-        <a className="btn btn-ghost text-xl">Bill <span className='text-fuchsia-600'>Pie</span></a>
-    </div>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-         {links }
-    </ul>
-  </div>
-  <div className="navbar-end">
-    {
-        user ? 
-      <a onClick={handleSignOut} className="btn bg-amber-500">Sign Out</a> :
-       <div className='flex gap-3'>
-        <Link to="/login" className='btn bg-amber-200'>Login</Link>
-       <Link to="/register" className='btn bg-amber-200'>Register</Link>
-       </div>
+  // Load dark mode from localStorage (on page load)
+  useEffect(() => {
+    const savedMode = localStorage.getItem("darkMode") === "true";
+    setDarkMode(savedMode);
+    if (savedMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
-  </div>
-</div>
-    );
+  }, []);
+
+  // ✅ Fixed toggle function
+  const toggleDarkMode = () => {
+    const newMode = !darkMode;
+    setDarkMode(newMode);
+    localStorage.setItem("darkMode", newMode);
+    if (newMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {})
+      .catch(() => {});
+  };
+
+  const navLinkClass = ({ isActive }) =>
+    isActive
+      ? "text-amber-700 dark:text-amber-400 border-b-2 border-amber-700 dark:border-amber-400"
+      : "text-gray-800 dark:text-gray-200 hover:text-amber-700 dark:hover:text-amber-400";
+
+  const links = (
+    <>
+      <li>
+        <NavLink to="/" className={navLinkClass}>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/allBills" className={navLinkClass}>
+          Bills
+        </NavLink>
+      </li>
+      {user && (
+        <li>
+          <NavLink to="/myPayBil" className={navLinkClass}>
+            My Pay Bills
+          </NavLink>
+        </li>
+      )}
+    </>
+  );
+
+  return (
+    <div className="navbar bg-linear-to-r from-amber-400 to-amber-200 dark:from-gray-700 dark:to-amber-900 shadow-md px-10 fixed top-0 left-0 w-full z-50 transition-colors duration-300">
+      {/* Navbar Start */}
+      <div className="navbar-start flex items-center gap-2">
+        <img
+          src={logo}
+          alt="logo"
+          className="w-12 h-12 border border-b-amber-800 rounded-3xl bg-amber-100 dark:bg-gray-700 p-1"
+        />
+        <Link to="/" className="btn btn-ghost text-xl dark:text-white transition">
+          Bill <span className="text-amber-800 dark:text-amber-400">Pie</span>
+        </Link>
+
+        {/* ✅ Dark/Light Toggle Icon */}
+        <button
+          onClick={toggleDarkMode}
+          className="ml-3 text-2xl text-gray-800 dark:text-yellow-400 transition"
+        >
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
+      </div>
+
+      {/* Navbar Center */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{links}</ul>
+      </div>
+
+      {/* Navbar End */}
+      <div className="navbar-end">
+        {user ? (
+          <button
+            onClick={handleSignOut}
+            className="btn border border-amber-800 bg-amber-700 dark:bg-amber-600 text-white hover:bg-amber-700 transition"
+          >
+            Sign Out
+          </button>
+        ) : (
+          <div className="flex gap-3">
+            <Link
+              to="/login"
+              className="btn border border-amber-800 bg-amber-400 dark:bg-gray-700 dark:text-white hover:bg-amber-400 dark:hover:bg-gray-600"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="btn border border-amber-800 bg-amber-600 dark:bg-gray-800 text-white hover:bg-amber-600 dark:hover:bg-gray-700"
+            >
+              Register
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

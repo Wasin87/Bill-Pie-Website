@@ -40,7 +40,7 @@ const Banner = () => {
   return (
     <div className="relative py-10 flex flex-col items-center">
       <h2 className="text-4xl font-bold text-center mb-8">
-        ⚡Bill Management System
+        ⚡Manage your available bills
       </h2>
 
       <div className="relative w-5/5 overflow-hidden rounded-3xl shadow-lg">
@@ -60,7 +60,7 @@ const Banner = () => {
               {/* Center text */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <h3 className="text-white text-xl md:text-2xl font-semibold text-center px-6 py-2 rounded  ">
-                  💡 Bill Management System simplifies your payments—fast, secure, and stress-free! ⚡
+              "💡 Bill Management System makes your payments simple, fast, secure, and completely stress-free! ⚡"
                 </h3>
               </div>
             </div>
