@@ -114,7 +114,7 @@ const Navbar = () => {
                 <img
                   src={user.photoURL || "https://via.placeholder.com/150"}
                   alt={user.displayName || "User"}
-                  className="w-10 h-10 rounded-full border border-amber-700"
+                  className="w-10 h-10 rounded-full border border-amber-700" referrerPolicy="no-referrer"
                 />
                 <span className="text-gray-800 dark:text-gray-200 font-semibold">
                   {user.displayName || "User"}

@@ -82,7 +82,7 @@ const Profile = () => {
         <button
           onClick={() => setEditMode(!editMode)}
           className="px-6 py-2 mt-2 font-semibold rounded-full
-            bg-linear-to-r from-amber-400 to-amber-600 dark:from-gray-600 dark:to-gray-700
+            bg-linear-to-r from-amber-500 to-amber-600 dark:from-gray-600 dark:to-amber-700
             text-white dark:text-amber-300 shadow-md hover:scale-105 transition-transform duration-300"
         >
           {editMode ? "Cancel" : "Update Profile"}
@@ -127,8 +127,8 @@ const Profile = () => {
           <button
             type="submit"
             className="px-6 py-2 mt-2 font-bold rounded-full
-              bg-linear-to-r from-amber-500 to-amber-700 dark:from-gray-600 dark:to-gray-700
-              text-white dark:text-amber-300 shadow-lg hover:scale-105 transition-transform duration-300"
+              bg-linear-to-r from-amber-500 to-amber-700 dark:from-gray-600 dark:to-amber-700
+              text-white dark:text-amber-200 shadow-lg hover:scale-105 transition-transform duration-300"
           >
             Save Changes
           </button>
