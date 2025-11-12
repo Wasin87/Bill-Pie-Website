@@ -122,7 +122,7 @@ const MyPayBills = () => {
                   onClick={() => setSelectedBill(bill)}  
                   className="btn btn-sm bg-amber-700 hover:bg-amber-600 text-white shadow-md transition-all duration-200"
                 >
-                  View bill reports
+                  View bill report
                 </button>
               </div>
 
