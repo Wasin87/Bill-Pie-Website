@@ -21,14 +21,12 @@ const AllBills = () => {
 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  // Check if bill is from current month (November - month 11)
+ 
   const isCurrentMonthBill = (billDate) => {
     const currentDate = new Date();
     const billDateObj = new Date(billDate);
     
-    // Check if bill is from November (month 10 in JavaScript, 0-indexed)
-    // AND current month is also November
+ 
     const isBillNovember = billDateObj.getMonth() === 10; // November is month 10 (0-indexed)
     const isCurrentNovember = currentDate.getMonth() === 10;
     
@@ -51,7 +49,7 @@ const AllBills = () => {
       });
   }, []);
 
-  // Redirected user logged in
+   
   useEffect(() => {
     const savedBill = sessionStorage.getItem("pendingBillDetails");
     if (user && savedBill) {
@@ -84,8 +82,7 @@ const AllBills = () => {
     setSearchQuery(e.target.value);
     setTimeout(() => setFiltering(false), 300);
   };
-
-  // Handle form input changes
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -94,7 +91,7 @@ const AllBills = () => {
     }));
   };
 
-  // Handle pay bill button click
+ 
   const handlePayBillClick = (bill) => {
     if (!user) {
       toast.warn("Please login to pay the bill!", { position: "top-right" });
@@ -111,7 +108,7 @@ const AllBills = () => {
     setIsModalOpen(true);
   };
 
-  // Handle pay bill form submission
+   
   const handlePayBillSubmit = async (e) => {
     e.preventDefault();
     
@@ -193,7 +190,7 @@ const AllBills = () => {
     });
   };
 
-  // Get current month name for display
+  
   const getCurrentMonthName = () => {
     const currentDate = new Date();
     return currentDate.toLocaleString('default', { month: 'long' });

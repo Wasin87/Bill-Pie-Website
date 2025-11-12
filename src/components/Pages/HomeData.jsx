@@ -150,7 +150,7 @@ const HomeData = ({ billPromise }) => {
     });
   };
 
-  // Get current month name for display
+  
   const getCurrentMonthName = () => {
     const currentDate = new Date();
     return currentDate.toLocaleString('default', { month: 'long' });
@@ -166,7 +166,7 @@ const HomeData = ({ billPromise }) => {
         <p>Check out the latest utility bills reported in your area</p>
       </div>
 
-      {/* Current Month Info */}
+       
       <div className="flex justify-center items-center mt-2">
         <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">
           💡 Only {getCurrentMonthName()} bills can be paid
@@ -209,7 +209,7 @@ const HomeData = ({ billPromise }) => {
                   </p>
                 </div>
 
-                {/* Month Indicator */}
+               
                 <div className="flex justify-between items-center mt-2">
                   <p className={`text-xs font-medium ${
                     isPayable ? 'text-green-600' : 'text-gray-500'
@@ -224,7 +224,7 @@ const HomeData = ({ billPromise }) => {
                 </div>
               </div>
 
-              {/* See Details Button */}
+               
               <button
                 onClick={() => handleSeeDetails(bill)}
                 className="flex justify-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 mt-3"
@@ -319,7 +319,7 @@ const HomeData = ({ billPromise }) => {
                   />
                 </div>
 
-                {/* Editable fields */}
+                
                 <div>
                   <label className="label">
                     <span className="label-text text-gray-700 dark:text-gray-300">Username *</span>

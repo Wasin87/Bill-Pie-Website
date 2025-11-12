@@ -204,7 +204,7 @@ const MyPayBills = () => {
         </div>
       )}
 
-      {/* Professional Modal for Bill Details */}
+       
       {selectedBill && (
         <div className="modal modal-open">
           <div className="modal-box max-w-4xl p-0 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
@@ -229,7 +229,7 @@ const MyPayBills = () => {
             {/* Modal Body */}
             <div className="p-6">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* Left Column - Bill Information */}
+                
                 <div className="space-y-4">
                   <div className="bg-amber-50 dark:bg-gray-700 rounded-2xl p-4">
                     <h4 className="font-semibold text-gray-800 dark:text-white mb-3 flex items-center gap-2">
@@ -279,7 +279,7 @@ const MyPayBills = () => {
                   </div>
                 </div>
 
-                {/* Right Column - Payment & User Information */}
+                 
                 <div className="space-y-4">
                   <div className="bg-green-50 dark:bg-green-900/20 rounded-2xl p-4 border border-green-200 dark:border-green-800">
                     <h4 className="font-semibold text-gray-800 dark:text-white mb-3 flex items-center gap-2">
@@ -336,7 +336,7 @@ const MyPayBills = () => {
                 </div>
               </div>
 
-              {/* Additional Info Section */}
+             
               {selectedBill.additionalInfo && (
                 <div className="mt-6 bg-gray-50 dark:bg-gray-700 rounded-2xl p-4">
                   <h4 className="font-semibold text-gray-800 dark:text-white mb-3">
