@@ -132,7 +132,7 @@ const MyPayBills = () => {
                   onClick={() => handleDownloadPDF(bill)}
                   className="btn btn-sm bg-amber-500 hover:bg-amber-600 text-white shadow-md transition-all duration-200"
                 >
-                  Download reports
+                  Download report
                 </button>
                 <button
                   onClick={() => handleDelete(bill._id)}
