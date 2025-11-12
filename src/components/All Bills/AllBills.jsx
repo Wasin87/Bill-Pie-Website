@@ -14,6 +14,7 @@ const AllBills = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // ✅ Load all bills
   useEffect(() => {
     setLoading(true);
     fetch("http://localhost:3000/bills")
@@ -28,6 +29,17 @@ const AllBills = () => {
       });
   }, []);
 
+  // ✅ If redirected back from login and user logged in
+  // → go directly to details page with saved bill
+  useEffect(() => {
+    const savedBill = sessionStorage.getItem("pendingBillDetails");
+    if (user && savedBill) {
+      const bill = JSON.parse(savedBill);
+      sessionStorage.removeItem("pendingBillDetails");
+      navigate("/details", { state: { bill } });
+    }
+  }, [user, navigate]);
+
   const categories = ["Electricity", "Gas", "Internet", "Water"];
 
   const filteredBills = billsData.filter((bill) => {
@@ -37,7 +49,6 @@ const AllBills = () => {
       bill.description.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesCategory = activeCategory ? bill.category === activeCategory : true;
-
     return matchesSearch && matchesCategory;
   });
 
@@ -53,6 +64,7 @@ const AllBills = () => {
     setTimeout(() => setFiltering(false), 300);
   };
 
+  // ✅ Pay Bill Handler
   const handlePayBill = (bill) => {
     if (!user) {
       toast.warn("Please login to pay the bill!", { position: "top-center" });
@@ -84,12 +96,20 @@ const AllBills = () => {
     }
   };
 
+  // ✅ See Details Handler (Same as HomeData)
   const handleSeeDetails = (bill) => {
     if (!user) {
       toast.warn("Please login to see details!", { position: "top-center" });
-      navigate("/login", { state: { fromBillDetails: bill } });
+
+      // 🔹 Save bill temporarily so we can redirect after login
+      sessionStorage.setItem("pendingBillDetails", JSON.stringify(bill));
+
+      // 🔹 Redirect to login page
+      navigate("/login");
       return;
     }
+
+    // ✅ If already logged in → go directly to details page
     navigate("/details", { state: { bill } });
   };
 
@@ -151,7 +171,9 @@ const AllBills = () => {
                     alt={bill.title}
                   />
                   <div className="flex items-center justify-between mt-3">
-                    <p className="font-bold text-lg text-gray-900 dark:text-gray-50">{bill.title}</p>
+                    <p className="font-bold text-lg text-gray-900 dark:text-gray-50">
+                      {bill.title}
+                    </p>
                     <span className="text-xs bg-amber-200 text-amber-800 px-2 py-1 rounded-full">
                       {bill.category}
                     </span>
@@ -161,10 +183,13 @@ const AllBills = () => {
                     <p className="text-gray-700 font-semibold text-sm dark:text-gray-50">
                       Amount: ৳{bill.amount}
                     </p>
-                    <p className="text-gray-500 text-xs dark:text-gray-50">{bill.date}</p>
+                    <p className="text-gray-500 text-xs dark:text-gray-50">
+                      {bill.date}
+                    </p>
                   </div>
                 </div>
 
+                {/* ✅ See Details Button (Updated) */}
                 <button
                   onClick={() => handleSeeDetails(bill)}
                   className="flex justify-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 mt-3"
@@ -172,6 +197,7 @@ const AllBills = () => {
                   See details
                 </button>
 
+                {/* ✅ Pay Bill Button */}
                 <div className="flex justify-center mt-4">
                   <button
                     onClick={() => handlePayBill(bill)}

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import {
@@ -8,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
   updateProfile
 } from 'firebase/auth';
 import { auth } from '../Firebase/Firebase.init';
@@ -42,12 +42,27 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  // ✅ New Reset Password (custom form-based)
+  const resetPassword = async (email, newPassword) => {
+    try {
+      // 1️⃣ sign in temporarily
+      const userCredential = await signInWithEmailAndPassword(auth, email, newPassword);
+      const user = userCredential.user;
+      // 2️⃣ update password
+      await updatePassword(user, newPassword);
+      // 3️⃣ sign out
+      await signOut(auth);
+      return Promise.resolve("Password updated successfully");
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
     });
-
     return () => unsubscribe();
   }, []);
 
@@ -57,6 +72,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signInWithGoogle,
     signOutUser,
+    resetPassword, // ✅ Added here
     user,
     loading,
   };

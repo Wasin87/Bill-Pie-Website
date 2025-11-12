@@ -6,16 +6,18 @@ import { toast } from "react-toastify";
 const Login = () => {
   const { signInUser, signInWithGoogle, resetPassword } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const [emailForReset, setEmailForReset] = useState("");
+  const [showResetForm, setShowResetForm] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const navigate = useNavigate();
 
+  // ✅ Handle Normal Login
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value.trim();
     const password = form.password.value.trim();
 
-    // ✅ Professional validation
     if (!email || !/\S+@\S+\.\S+/.test(email)) {
       setError("Please enter a valid email address.");
       return;
@@ -28,68 +30,95 @@ const Login = () => {
     setError("");
     signInUser(email, password)
       .then((result) => {
-        console.log("Logged in:", result.user);
-        toast.success("✅ Logged in successfully!");
-        navigate("/");
+        if (result?.user) {
+          toast.success("✅ Logged in successfully!");
+          navigate("/");
+        }
       })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
         setError("Invalid email or password. Try again.");
       });
   };
 
+  // ✅ Handle Google Sign In
   const handleGoogleSignIn = () => {
     signInWithGoogle()
-      .then((result) => {
+      .then((res) => {
+        if (!res || !res.user) return;
         const newUser = {
-          name: result.user.displayName,
-          email: result.user.email,
-          image: result.user.photoURL,
+          name: res.user.displayName,
+          email: res.user.email,
+          image: res.user.photoURL,
         };
 
-        fetch("http://localhost:3000/users", {
+        return fetch("http://localhost:3000/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(newUser),
-        })
-          .then((res) => res.json())
-          .then(() => {
-            toast.success("✅ Logged in with Google!");
-            navigate("/");
-          });
+        });
+      })
+      .then((response) => {
+        if (response && response.ok) {
+          toast.success("✅ Logged in with Google!");
+          navigate("/");
+        }
       })
       .catch((error) => {
         console.error(error);
-        toast.error("Google login failed.");
+        toast.error("⚠️ Google login failed. Try again!");
       });
   };
 
-  // ✅ Forget password handler
+  // ✅ Toggle Forget Password Form
   const handleForgetPassword = () => {
-    if (!emailForReset) {
-      toast.warning("Enter your email first!");
+    setShowResetForm(!showResetForm);
+    setResetEmail("");
+    setNewPassword("");
+  };
+
+  // ✅ Submit new password
+  const handlePasswordResetSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!resetEmail || !/\S+@\S+\.\S+/.test(resetEmail)) {
+      toast.warning("Enter a valid email!");
       return;
     }
-    resetPassword(emailForReset)
-      .then(() => {
-        toast.success("Password reset email sent! Check your inbox.");
-      })
-      .catch(() => {
-        toast.error("Failed to send reset email. Try again.");
-      });
+    if (newPassword.length < 6) {
+      toast.warning("Password must be at least 6 characters long!");
+      return;
+    }
+
+    try {
+      // 🔹 Try to reset password (via Firebase or custom API)
+      const res = await resetPassword(resetEmail, newPassword);
+
+      // যদি Firebase এর custom ফাংশন হয়, তাহলে res null হতে পারে, তাই safe check:
+      if (res?.status === 200 || res === true || res === undefined) {
+        toast.success("✅ Password reset successfully!");
+        setShowResetForm(false);
+        setResetEmail("");
+        setNewPassword("");
+      } else {
+        throw new Error("Reset failed");
+      }
+    } catch (error) {
+      console.error("Password Reset Error:", error);
+      toast.error("⚠️ Failed to reset password. Please try again!");
+    }
   };
 
   return (
     <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-linear-to-b from-amber-400 to-amber-200 dark:from-gray-800 dark:to-amber-800 dark:text-white">
       <h1 className="text-3xl font-bold text-center mt-5">Login now!</h1>
 
+      {/* ✅ Normal Login Form */}
       <form onSubmit={handleLogin} className="card-body">
         <fieldset className="fieldset">
           <label className="label text-black dark:text-white">Email</label>
           <input
             type="email"
             name="email"
-            onChange={(e) => setEmailForReset(e.target.value)}
             className="input rounded-xl dark:bg-gray-500"
             placeholder="Enter your email"
             required
@@ -132,7 +161,36 @@ const Login = () => {
         </fieldset>
       </form>
 
-      {/* Google */}
+      {/* ✅ Forget Password Form */}
+      {showResetForm && (
+        <div className="px-6 pb-6">
+          <h3 className="text-lg font-semibold mb-3 text-center">Reset Password</h3>
+          <form onSubmit={handlePasswordResetSubmit}>
+            <input
+              type="email"
+              value={resetEmail}
+              onChange={(e) => setResetEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="input w-full mb-3 rounded-xl dark:bg-gray-500"
+            />
+            <input
+              type="password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              placeholder="Enter new password"
+              className="input w-full mb-3 rounded-xl dark:bg-gray-500"
+            />
+            <button
+              type="submit"
+              className="btn w-full bg-amber-600 text-white rounded-2xl"
+            >
+              Reset Password
+            </button>
+          </form>
+        </div>
+      )}
+
+      {/* ✅ Google Login */}
       <button
         onClick={handleGoogleSignIn}
         className="btn bg-white text-black border-[#e5e5e5] rounded-3xl w-[330px] flex items-center justify-center mb-5 m-auto "
