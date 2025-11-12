@@ -103,7 +103,7 @@ const HomeData = ({ billPromise }) => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/payBill", {
+      const res = await fetch("https://bill-management-db-api.vercel.app/payBill", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payData),

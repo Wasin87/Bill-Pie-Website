@@ -74,7 +74,7 @@ const Profile = () => {
           <img
             src={formData.photo || "https://via.placeholder.com/150"}
             alt={formData.name || "User"}
-            className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-600 shadow-lg"
+            className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-600 shadow-lg" referrerPolicy="no-referrer"
           />
         </div>
         <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{formData.name}</h3>

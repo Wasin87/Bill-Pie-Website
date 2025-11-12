@@ -3,7 +3,7 @@ import Banner from '../Pages/Banner';
 import HomeData from '../Pages/HomeData';
 import Utilities from '../Pages/Utilities';
 
-const billPromise = fetch('http://localhost:3000/recentBills')
+const billPromise = fetch('https://bill-management-db-api.vercel.app/recentBills')
  .then(res => res.json());
 
 const Home = () => {
