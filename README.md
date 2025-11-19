@@ -166,7 +166,7 @@ npm start
 
 * **Home (Base API):** [https://bill-management-db-api.vercel.app/](https://bill-management-db-api.vercel.app/)  
 * **All Bills:** [https://bill-management-db-api.vercel.app/bills](https://bill-management-db-api.vercel.app/bills)  
-* **My Bills:** [https://bill-management-db-api.vercel.app/myBill](https://bill-management-db-api.vercel.app/myBill)
+* **My Bills:** [https://bill-management-db-api.vercel.app/myBill](https://bill-management-db-api.vercel.app/payBill)
 
 
 ## 👨‍💻 *Developer Information*
