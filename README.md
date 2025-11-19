@@ -93,10 +93,10 @@ Stores logged-in user payment records such as username, email, address, phone, d
 * *Backend:* Node.js, Express.js
 * *Database:* MongoDB (Atlas)
 * *Authentication:* Firebase Authentication (Email + Google)
-* *PDF Report:* jsPDF + jsPDF-AutoTable
+* *PDF Report:* jsPDF 
 * *Notification:* React Toastify / SweetAlert2
 * *Deployment:*
-  Client – Netlify / Surge / Firebase
+  Client – Firebase
   Server – Vercel
 
 ---
