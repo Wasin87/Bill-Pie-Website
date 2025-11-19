@@ -5,6 +5,9 @@
 It provides a *secure, responsive, and user-friendly* interface where all bill-related tasks can be handled in one place.
 
 ---
+ 
+<img width="1900" height="880" alt="image" src="https://github.com/user-attachments/assets/3a5346a0-0d35-4c51-b7de-6c87edee34ca" />
+
 
 ## 🌟 *Key Features*
 
