@@ -18,18 +18,15 @@ const HomeData = ({ billPromise }) => {
     additionalInfo: ""
   });
 
-  // Check if bill is from current month (November - month 11)
+  // 🔥 Check bill is from current month dynamically
   const isCurrentMonthBill = (billDate) => {
     const currentDate = new Date();
     const billDateObj = new Date(billDate);
-    
-    // Check if bill is from November (month 10 in JavaScript, 0-indexed)
-    // AND current month is also November
-    const isBillNovember = billDateObj.getMonth() === 10; // November is month 10 (0-indexed)
-    const isCurrentNovember = currentDate.getMonth() === 10;
-    
-    return isBillNovember && isCurrentNovember && 
-           currentDate.getFullYear() === billDateObj.getFullYear();
+
+    const sameMonth = currentDate.getMonth() === billDateObj.getMonth();
+    const sameYear = currentDate.getFullYear() === billDateObj.getFullYear();
+
+    return sameMonth && sameYear;
   };
 
   // Redirected user
@@ -51,7 +48,7 @@ const HomeData = ({ billPromise }) => {
     }));
   };
 
-  // Handle pay bill button click
+  // Pay Bill button click
   const handlePayBillClick = (bill) => {
     if (!user) {
       toast.warn("Please login to pay the bill!", { position: "top-right" });
@@ -60,7 +57,7 @@ const HomeData = ({ billPromise }) => {
     }
 
     if (!isCurrentMonthBill(bill.date)) {
-      toast.warn("Only bills of the current month can be paid", { position: "top-right" });
+      toast.warn("Only current month's bills can be paid", { position: "top-right" });
       return;
     }
 
@@ -68,17 +65,15 @@ const HomeData = ({ billPromise }) => {
     setIsModalOpen(true);
   };
 
-  // Handle pay bill form submission
+  // Pay Bill Submit
   const handlePayBillSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validation
+
     if (!formData.username.trim() || !formData.address.trim() || !formData.phone.trim()) {
       toast.error("Please fill in all required fields", { position: "top-right" });
       return;
     }
 
-    // Phone number validation
     const phoneRegex = /^01[3-9]\d{8}$/;
     if (!phoneRegex.test(formData.phone)) {
       toast.error("Please enter a valid Bangladeshi phone number", { position: "top-right" });
@@ -150,7 +145,7 @@ const HomeData = ({ billPromise }) => {
     });
   };
 
-  
+  // Show current month name
   const getCurrentMonthName = () => {
     const currentDate = new Date();
     return currentDate.toLocaleString('default', { month: 'long' });
@@ -166,7 +161,6 @@ const HomeData = ({ billPromise }) => {
         <p>Check out the latest utility bills reported in your area</p>
       </div>
 
-       
       <div className="flex justify-center items-center mt-2">
         <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">
           💡 Only {getCurrentMonthName()} bills can be paid
@@ -178,7 +172,7 @@ const HomeData = ({ billPromise }) => {
           const isPayable = isCurrentMonthBill(bill.date);
           const billDate = new Date(bill.date);
           const billMonth = billDate.toLocaleString('default', { month: 'long' });
-          
+
           return (
             <div
               key={bill._id}
@@ -209,7 +203,6 @@ const HomeData = ({ billPromise }) => {
                   </p>
                 </div>
 
-               
                 <div className="flex justify-between items-center mt-2">
                   <p className={`text-xs font-medium ${
                     isPayable ? 'text-green-600' : 'text-gray-500'
@@ -224,7 +217,6 @@ const HomeData = ({ billPromise }) => {
                 </div>
               </div>
 
-               
               <button
                 onClick={() => handleSeeDetails(bill)}
                 className="flex justify-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 mt-3"
@@ -282,7 +274,7 @@ const HomeData = ({ billPromise }) => {
             
             <form onSubmit={handlePayBillSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Read-only fields */}
+                
                 <div className="md:col-span-2">
                   <label className="label">
                     <span className="label-text text-gray-700 dark:text-gray-300">Email</span>
@@ -319,7 +311,6 @@ const HomeData = ({ billPromise }) => {
                   />
                 </div>
 
-                
                 <div>
                   <label className="label">
                     <span className="label-text text-gray-700 dark:text-gray-300">Username *</span>

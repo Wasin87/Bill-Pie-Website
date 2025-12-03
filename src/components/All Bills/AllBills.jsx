@@ -21,20 +21,19 @@ const AllBills = () => {
 
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
- 
+
+  // DYNAMIC MONTH CHECK
   const isCurrentMonthBill = (billDate) => {
-    const currentDate = new Date();
-    const billDateObj = new Date(billDate);
-    
- 
-    const isBillNovember = billDateObj.getMonth() === 10; // November is month 10 (0-indexed)
-    const isCurrentNovember = currentDate.getMonth() === 10;
-    
-    return isBillNovember && isCurrentNovember && 
-           currentDate.getFullYear() === billDateObj.getFullYear();
+    const today = new Date();
+    const bill = new Date(billDate);
+
+    return (
+      today.getMonth() === bill.getMonth() &&
+      today.getFullYear() === bill.getFullYear()
+    );
   };
 
-  // All bills
+  // Fetch all bills
   useEffect(() => {
     setLoading(true);
     fetch("https://bill-management-db-api.vercel.app/bills")
@@ -49,7 +48,6 @@ const AllBills = () => {
       });
   }, []);
 
-   
   useEffect(() => {
     const savedBill = sessionStorage.getItem("pendingBillDetails");
     if (user && savedBill) {
@@ -82,7 +80,7 @@ const AllBills = () => {
     setSearchQuery(e.target.value);
     setTimeout(() => setFiltering(false), 300);
   };
- 
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -91,7 +89,6 @@ const AllBills = () => {
     }));
   };
 
- 
   const handlePayBillClick = (bill) => {
     if (!user) {
       toast.warn("Please login to pay the bill!", { position: "top-right" });
@@ -99,8 +96,9 @@ const AllBills = () => {
       return;
     }
 
+    // check dynamic month condition
     if (!isCurrentMonthBill(bill.date)) {
-      toast.warn("Only bills of the current month can be paid", { position: "top-right" });
+      toast.warn("Only current month bills can be paid", { position: "top-right" });
       return;
     }
 
@@ -108,17 +106,14 @@ const AllBills = () => {
     setIsModalOpen(true);
   };
 
-   
   const handlePayBillSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validation
+
     if (!formData.username.trim() || !formData.address.trim() || !formData.phone.trim()) {
       toast.error("Please fill in all required fields", { position: "top-right" });
       return;
     }
 
-    // Phone number validation
     const phoneRegex = /^01[3-9]\d{8}$/;
     if (!phoneRegex.test(formData.phone)) {
       toast.error("Please enter a valid Bangladeshi phone number", { position: "top-right" });
@@ -152,13 +147,13 @@ const AllBills = () => {
       if (res.ok) {
         toast.success("✅ Bill Paid Successfully!", { position: "top-right" });
         setIsModalOpen(false);
+        setSelectedBill(null);
         setFormData({
           username: "",
           address: "",
           phone: "",
           additionalInfo: ""
         });
-        setSelectedBill(null);
       } else {
         const errorData = await res.json();
         toast.error(errorData.message || "⚠️ Something went wrong!", { position: "top-right" });
@@ -190,10 +185,8 @@ const AllBills = () => {
     });
   };
 
-  
   const getCurrentMonthName = () => {
-    const currentDate = new Date();
-    return currentDate.toLocaleString('default', { month: 'long' });
+    return new Date().toLocaleString("default", { month: "long" });
   };
 
   return (
@@ -205,14 +198,13 @@ const AllBills = () => {
         <p>Browse and manage all available utility bills</p>
       </div>
 
-      {/* Current Month Info */}
       <div className="flex justify-center items-center mt-2">
         <p className="text-sm text-amber-600 dark:text-amber-400 font-medium">
           💡 Only {getCurrentMonthName()} bills can be paid
         </p>
       </div>
 
-      {/* Search and Filter Section */}
+      {/* Search and Filter */}
       <div className="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
         <div className="flex gap-2 flex-wrap justify-center md:justify-start">
           {categories.map((cat) => (
@@ -236,12 +228,12 @@ const AllBills = () => {
             placeholder="Search bills..."
             value={searchQuery}
             onChange={handleSearchChange}
-            className="w-full md:w-64 px-4 py-2 bg-amber-50 border border-amber-500 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-amber-400 dark:bg-gray-700 dark:text-gray-200"
+            className="w-full md:w-64 px-4 py-2 bg-amber-50 border border-amber-500 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-400 dark:bg-gray-700 dark:text-gray-200"
           />
         </div>
       </div>
 
-      {/* Loading or Bills Grid */}
+      {/* Bills */}
       {(loading || filtering) ? (
         <div className="flex justify-center items-center mt-10">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-amber-500 border-b-4"></div>
@@ -252,12 +244,12 @@ const AllBills = () => {
             filteredBills.map((bill) => {
               const isPayable = isCurrentMonthBill(bill.date);
               const billDate = new Date(bill.date);
-              const billMonth = billDate.toLocaleString('default', { month: 'long' });
-              
+              const billMonth = billDate.toLocaleString("default", { month: "long" });
+
               return (
                 <div
                   key={bill._id}
-                  className="border border-gray-200 rounded-2xl shadow-md p-4 w-full max-w-md h-[460px] flex flex-col justify-between bg-amber-50 hover:shadow-lg transition-transform duration-300 hover:-translate-y-2 dark:bg-gray-800"
+                  className="border border-gray-200 rounded-2xl shadow-md p-4 w-full max-w-md h-[460px] flex flex-col justify-between bg-amber-50 dark:bg-gray-800"
                 >
                   <div>
                     <img
@@ -266,9 +258,7 @@ const AllBills = () => {
                       alt={bill.title}
                     />
                     <div className="flex items-center justify-between mt-3">
-                      <p className="font-bold text-lg text-gray-900 dark:text-gray-50">
-                        {bill.title}
-                      </p>
+                      <p className="font-bold text-lg">{bill.title}</p>
                       <span className="text-xs bg-amber-200 text-amber-800 px-2 py-1 rounded-full">
                         {bill.category}
                       </span>
@@ -278,42 +268,35 @@ const AllBills = () => {
                       <p className="text-gray-700 font-semibold text-sm dark:text-gray-50">
                         Amount: ৳{bill.amount}
                       </p>
-                      <p className="text-gray-500 text-xs dark:text-gray-50">
-                        {bill.date}
-                      </p>
+                      <p className="text-gray-500 text-xs">{bill.date}</p>
                     </div>
 
-                    {/* Month Indicator */}
                     <div className="flex justify-between items-center mt-2">
                       <p className={`text-xs font-medium ${
-                        isPayable ? 'text-green-600' : 'text-gray-500'
+                        isPayable ? "text-green-600" : "text-gray-500"
                       }`}>
                         📅 {billMonth} Bill
                       </p>
                       {!isPayable && (
-                        <p className="text-xs text-amber-600">
-                          Not payable this month
-                        </p>
+                        <p className="text-xs text-amber-600">Not payable this month</p>
                       )}
                     </div>
                   </div>
 
-                  {/* See Details Button */}
                   <button
                     onClick={() => handleSeeDetails(bill)}
-                    className="flex justify-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 mt-3"
+                    className="flex justify-center text-amber-800 hover:text-amber-600 hover:underline mt-3"
                   >
                     See details
                   </button>
 
-                  {/* Pay Bill Button */}
                   <div className="flex flex-col items-center mt-4">
                     <button
                       onClick={() => handlePayBillClick(bill)}
                       disabled={!isPayable}
                       className={`px-6 py-2 w-80 text-white rounded-2xl transition ${
-                        isPayable 
-                          ? "bg-linear-to-r from-amber-600 to-amber-400 hover:opacity-90 hover:shadow-lg" 
+                        isPayable
+                          ? "bg-amber-600 hover:bg-amber-700"
                           : "bg-gray-400 cursor-not-allowed"
                       }`}
                     >
@@ -336,131 +319,107 @@ const AllBills = () => {
         </div>
       )}
 
-      {/* Pay Bill Modal */}
+      {/* Payment Modal */}
       {isModalOpen && selectedBill && (
         <div className="modal modal-open">
-          <div className="modal-box bg-white dark:bg-gray-800 border border-amber-200 dark:border-gray-600 max-w-2xl">
+          <div className="modal-box bg-white dark:bg-gray-800 max-w-2xl">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="font-bold text-lg text-gray-800 dark:text-white">
+              <h3 className="font-bold text-lg">
                 Pay Bill - {selectedBill.title}
               </h3>
-              <button 
-                onClick={closeModal}
-                className="btn btn-sm btn-circle btn-ghost"
-              >
-                ✕
-              </button>
+              <button onClick={closeModal} className="btn btn-sm btn-circle btn-ghost">✕</button>
             </div>
-            
+
             <form onSubmit={handlePayBillSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Read-only fields */}
                 <div className="md:col-span-2">
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Email</span>
-                  </label>
+                  <label className="label"><span>Email</span></label>
                   <input
                     type="email"
                     value={user?.email || ""}
                     readOnly
-                    className="input input-bordered w-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                    className="input input-bordered w-full bg-gray-100"
                   />
                 </div>
 
                 <div>
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Bill ID</span>
-                  </label>
+                  <label className="label"><span>Bill ID</span></label>
                   <input
                     type="text"
                     value={selectedBill._id}
                     readOnly
-                    className="input input-bordered w-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                    className="input input-bordered w-full bg-gray-100"
                   />
                 </div>
 
                 <div>
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Amount (৳)</span>
-                  </label>
+                  <label className="label"><span>Amount (৳)</span></label>
                   <input
                     type="text"
                     value={selectedBill.amount}
                     readOnly
-                    className="input input-bordered w-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                    className="input input-bordered w-full bg-gray-100"
                   />
                 </div>
 
-                {/* Editable fields */}
                 <div>
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Username *</span>
-                  </label>
+                  <label className="label"><span>Username *</span></label>
                   <input
                     type="text"
                     name="username"
                     value={formData.username}
                     onChange={handleInputChange}
                     required
-                    className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                    className="input input-bordered w-full"
                     placeholder="Enter your username"
                   />
                 </div>
 
                 <div>
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Phone *</span>
-                  </label>
+                  <label className="label"><span>Phone *</span></label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
                     required
-                    className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                    className="input input-bordered w-full"
                     placeholder="01XXXXXXXXX"
                     pattern="01[3-9]\d{8}"
                   />
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Address *</span>
-                  </label>
+                  <label className="label"><span>Address *</span></label>
                   <input
                     type="text"
                     name="address"
                     value={formData.address}
                     onChange={handleInputChange}
                     required
-                    className="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                    className="input input-bordered w-full"
                     placeholder="Enter your address"
                   />
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Payment Date</span>
-                  </label>
+                  <label className="label"><span>Payment Date</span></label>
                   <input
                     type="text"
-                    value={new Date().toISOString().split('T')[0]}
+                    value={new Date().toISOString().split("T")[0]}
                     readOnly
-                    className="input input-bordered w-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                    className="input input-bordered w-full bg-gray-100"
                   />
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="label">
-                    <span className="label-text text-gray-700 dark:text-gray-300">Additional Info</span>
-                  </label>
+                  <label className="label"><span>Additional Info</span></label>
                   <textarea
                     name="additionalInfo"
                     value={formData.additionalInfo}
                     onChange={handleInputChange}
-                    className="textarea textarea-bordered w-full bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
+                    className="textarea textarea-bordered w-full"
                     placeholder="Any additional information (optional)"
-                    rows="3"
                   />
                 </div>
               </div>
@@ -469,7 +428,7 @@ const AllBills = () => {
                 <button type="button" onClick={closeModal} className="btn btn-ghost">
                   Cancel
                 </button>
-                <button type="submit" className="btn bg-amber-600 hover:bg-amber-700 text-white border-none">
+                <button type="submit" className="btn bg-amber-600 text-white">
                   Confirm Payment
                 </button>
               </div>
