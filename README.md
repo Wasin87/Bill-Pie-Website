@@ -6,11 +6,14 @@ It provides a *secure, responsive, and user-friendly* interface where all bill-r
 
 ---
 ## 🖼 App Overview <br>
-<img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/3a5346a0-0d35-4c51-b7de-6c87edee34ca" />
-<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/00880c6e-f051-4f3a-b553-fba5dfb15520" />
-<img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/b382b107-1011-4c0a-90ac-1fab5a300682" />
-<img width="500" height="480" alt="image" src="https://github.com/user-attachments/assets/0cc85ca2-576f-4d7c-9fa3-f5235251b04d" />
+<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/66af4e5f-d666-46fe-b246-2d0f6908c00e" />
 
+<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/9cdd7464-5a7a-40f5-b258-fd5cf3221836" />
+<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/79708920-f70a-4e67-9af1-7a43ad4721ba" />
+
+ <img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/29ff685c-27ea-41fb-93af-15751cad3b0a" />
+
+ 
 
  
 ## 🌟 *Key Features*
