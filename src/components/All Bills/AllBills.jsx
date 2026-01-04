@@ -365,7 +365,7 @@ const AllBills = () => {
           onClick={() => handlePageChange(i)}
           className={`px-3 py-1 rounded-lg transition-all duration-300 ${
             currentPage === i
-              ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md"
+              ? "bg-linear-to-r from-amber-500 to-amber-600 text-white shadow-md"
               : "bg-amber-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-amber-100 dark:hover:bg-gray-600"
           }`}
         >
@@ -423,7 +423,7 @@ const AllBills = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50/50 to-white dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-b from-amber-50/50 to-white dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <motion.div
@@ -461,7 +461,7 @@ const AllBills = () => {
                 onClick={() => handleCategoryClick("")}
                 className={`px-4 py-2 rounded-full font-medium transition-all ${
                   activeCategory === ""
-                    ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md"
+                    ? "bg-linear-to-r from-amber-500 to-amber-600 text-white shadow-md"
                     : "bg-amber-100 dark:bg-gray-700 text-amber-800 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-gray-600"
                 }`}
               >
@@ -473,7 +473,7 @@ const AllBills = () => {
                   onClick={() => handleCategoryClick(cat)}
                   className={`px-4 py-2 rounded-full font-medium transition-all ${
                     activeCategory === cat
-                      ? "bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md"
+                      ? "bg-linear-to-r from-amber-500 to-amber-600 text-white shadow-md"
                       : "bg-amber-100 dark:bg-gray-700 text-amber-800 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-gray-600"
                   }`}
                 >
@@ -580,7 +580,7 @@ const AllBills = () => {
                                 e.target.src = `https://via.placeholder.com/400x200/FFD54F/374151?text=${bill.category}`;
                               }}
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
                             
                             {/* Date Overlay */}
                             <div className="absolute bottom-4 left-4">
@@ -606,7 +606,7 @@ const AllBills = () => {
                             </h3>
                             
                             <div className="flex items-center gap-2 mb-3">
-                              <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${categoryColor}`} />
+                              <div className={`w-3 h-3 rounded-full bg-linear-to-r ${categoryColor}`} />
                               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                                 {bill.category}
                               </span>
@@ -654,7 +654,7 @@ const AllBills = () => {
                                 disabled={!isPayable}
                                 className={`flex-1 flex items-center justify-center gap-2 py-2 px-2 rounded-xl font-bold transition-all duration-300 ${
                                   isPayable
-                                    ? `bg-gradient-to-r ${categoryColor} text-white hover:shadow-lg hover:scale-[1.02]`
+                                    ? `bg-linear-to-r ${categoryColor} text-white hover:shadow-lg hover:scale-[1.02]`
                                     : "bg-gray-300 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed"
                                 }`}
                               >
@@ -736,7 +736,7 @@ const AllBills = () => {
                       setSearchQuery("");
                       setActiveCategory("");
                     }}
-                    className="px-6 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white rounded-full hover:shadow-lg transition-all"
+                    className="px-6 py-2 bg-linear-to-r from-amber-500 to-amber-600 text-white rounded-full hover:shadow-lg transition-all"
                   >
                     Clear Filters
                   </button>
@@ -765,7 +765,7 @@ const AllBills = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="p-6 bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-700">
+              <div className="p-6 bg-linear-to-r from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-700">
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className="font-bold text-lg text-white">
@@ -873,7 +873,7 @@ const AllBills = () => {
                   </button>
                   <button 
                     type="submit" 
-                    className="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-lg transition-all text-sm"
+                    className="px-4 py-2 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-lg transition-all text-sm"
                   >
                     Confirm Payment
                   </button>

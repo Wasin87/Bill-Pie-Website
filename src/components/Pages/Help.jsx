@@ -78,7 +78,7 @@ const Help = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Back Button */}
         <div className="mb-6">
@@ -98,7 +98,7 @@ const Help = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl">
+            <div className="p-3 bg-linear-to-r from-blue-500 to-cyan-500 rounded-xl">
               <FaHeadset className="text-2xl text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -156,7 +156,7 @@ const Help = () => {
               onClick={() => setActiveTab('contact')}
               className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 activeTab === 'contact'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -166,7 +166,7 @@ const Help = () => {
               onClick={() => setActiveTab('faq')}
               className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 activeTab === 'faq'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -176,7 +176,7 @@ const Help = () => {
               onClick={() => setActiveTab('status')}
               className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 activeTab === 'status'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -264,7 +264,7 @@ const Help = () => {
                   <div className="flex justify-end">
                     <button
                       type="submit"
-                      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl transition-all"
+                      className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl transition-all"
                     >
                       <FaPaperPlane />
                       Send Message
@@ -383,7 +383,7 @@ const Help = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800"
+          className="bg-linear-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800"
         >
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <FaLifeRing className="text-blue-600 dark:text-blue-400" />

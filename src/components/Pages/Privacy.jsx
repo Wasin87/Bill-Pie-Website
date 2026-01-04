@@ -98,7 +98,7 @@ const Privacy = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Back Button */}
         <div className="mb-6">
@@ -118,7 +118,7 @@ const Privacy = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl">
+            <div className="p-3 bg-linear-to-r from-blue-500 to-cyan-500 rounded-xl">
               <MdPrivacyTip className="text-2xl text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -150,7 +150,7 @@ const Privacy = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 mb-8 border border-blue-200 dark:border-blue-800"
+          className="bg-linear-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 mb-8 border border-blue-200 dark:border-blue-800"
         >
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <FaShieldAlt className="text-blue-600 dark:text-blue-400" />
@@ -273,7 +273,7 @@ const Privacy = () => {
               ))}
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10 rounded-xl p-6">
+            <div className="bg-linear-to-br from-blue-50 to-cyan-50 dark:from-blue-900/10 dark:to-cyan-900/10 rounded-xl p-6">
               <h4 className="font-bold text-gray-900 dark:text-white mb-3">Exercise Your Rights</h4>
               <p className="text-gray-700 dark:text-gray-300 mb-4">
                 To exercise any of these rights, contact our Data Protection Officer:

@@ -377,8 +377,8 @@ const HomeData = ({ billPromise }) => {
                     alt={bill.title}
                   />
                   
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                  {/* linear Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
                   
                   {/* Category icon */}
                   <div className="absolute top-2 right-2 bg-white/90 dark:bg-gray-800/90 p-2 rounded-full shadow">
@@ -406,7 +406,7 @@ const HomeData = ({ billPromise }) => {
                   {/* Category and Location */}
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-1">
-                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${categoryColor}`} />
+                      <div className={`w-2 h-2 rounded-full bg-linear-to-r ${categoryColor}`} />
                       <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
                         {bill.category}
                       </span>
@@ -470,7 +470,7 @@ const HomeData = ({ billPromise }) => {
       flex-1 flex items-center justify-center gap-1 font-semibold py-2 px-1 rounded-lg
       transition-all duration-300 text-xs
       ${isPayable 
-        ? `bg-gradient-to-r ${categoryColor} text-white hover:shadow-md` 
+        ? `bg-linear-to-r ${categoryColor} text-white hover:shadow-md` 
         : 'bg-gray-300 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed'
       }
     `}
@@ -514,7 +514,7 @@ const HomeData = ({ billPromise }) => {
         <Link to="/allBills">
           <button className="
             inline-flex items-center gap-2
-            px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-600 
+            px-8 py-3 bg-linear-to-r from-amber-500 to-amber-600 
             dark:from-amber-600 dark:to-amber-700
             text-white font-bold rounded-xl
             hover:from-amber-600 hover:to-amber-700
@@ -546,7 +546,7 @@ const HomeData = ({ billPromise }) => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header */}
-              <div className="p-6 bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-700">
+              <div className="p-6 bg-linear-to-r from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-700">
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className="font-bold text-lg text-white">
@@ -654,7 +654,7 @@ const HomeData = ({ billPromise }) => {
                   </button>
                   <button 
                     type="submit" 
-                    className="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-lg transition-all text-sm"
+                    className="px-4 py-2 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-lg transition-all text-sm"
                   >
                     Confirm Payment
                   </button>

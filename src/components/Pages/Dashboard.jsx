@@ -325,12 +325,12 @@ const Dashboard = () => {
 
 
               
-          <div className="items-center flex-shrink-0">
+          <div className="items-center ">
             <Link to="/" className="flex items-center space-x-2">
               <img
                 src={logo}
                 alt="Bill Pie Logo"
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-amber-100 dark:bg-gray-700 p-1 border-2 border-amber-700 dark:border-amber-500 flex-shrink-0"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-amber-100 dark:bg-gray-700 p-1 border-2 border-amber-700 dark:border-amber-500 "
               />
               <span className="text-base md:text-lg lg:text-xl font-bold text-gray-900 dark:text-white whitespace-nowrap">
                 Bill <span className="text-amber-800 dark:text-amber-400">Pie</span>
@@ -357,7 +357,7 @@ const Dashboard = () => {
                   <img
                     src={user.photoURL || "https://via.placeholder.com/150"}
                     alt={user.displayName || "User"}
-                    className="w-10 h-10 rounded-full border-2 border-amber-600 dark:border-amber-500 flex-shrink-0"
+                    className="w-10 h-10 rounded-full border-2 border-amber-600 dark:border-amber-500 "
                     referrerPolicy="no-referrer"
                   />
                    
@@ -427,7 +427,7 @@ const Dashboard = () => {
                     className={`
                       w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all
                       ${activeTab === item.id 
-                        ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white' 
+                        ? 'bg-linear-to-r from-amber-500 to-orange-500 text-white' 
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                       }
                     `}
@@ -443,7 +443,7 @@ const Dashboard = () => {
             </div>
             
             {/* Quick Stats */}
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-4">
+            <div className="bg-linear-to-br from-blue-50 to-cyan-50 dark:from-gray-700 dark:to-gray-800 rounded-xl p-4">
               <h3 className="text-sm font-bold text-gray-900 dark:text-white mb-2">
                 Quick Stats
               </h3>
@@ -485,7 +485,7 @@ const Dashboard = () => {
                 className="space-y-8"
               >
                 {/* Welcome Message */}
-                <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-6 text-white">
+                <div className="bg-linear-to-r from-amber-500 to-orange-500 rounded-2xl p-6 text-white">
                   <h2 className="text-2xl font-bold mb-2">
                     Welcome back, {profileData.name}!
                   </h2>
@@ -551,10 +551,10 @@ const Dashboard = () => {
                             strokeWidth={2}
                           />
                           <defs>
-                            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                            <linearlinear id="colorUv" x1="0" y1="0" x2="0" y2="1">
                               <stop offset="5%" stopColor="#F59E0B" stopOpacity={0.8}/>
                               <stop offset="95%" stopColor="#F59E0B" stopOpacity={0}/>
-                            </linearGradient>
+                            </linearlinear>
                           </defs>
                         </AreaChart>
                       </ResponsiveContainer>
@@ -713,7 +713,7 @@ const Dashboard = () => {
                   </div>
                   <button 
                     onClick={() => navigate('/allBills')}
-                    className="px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:shadow-lg transition-shadow"
+                    className="px-4 py-2 bg-linear-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:shadow-lg transition-shadow"
                   >
                     + Add New Bill
                   </button>
@@ -1001,7 +1001,7 @@ const Dashboard = () => {
                         </button>
                         <button
                           type="submit"
-                          className="px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:shadow-lg transition-shadow"
+                          className="px-6 py-2 bg-linear-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:shadow-lg transition-shadow"
                         >
                           Update Profile
                         </button>
@@ -1017,7 +1017,7 @@ const Dashboard = () => {
                   <img
                     src={user.photoURL || "https://via.placeholder.com/150"}
                     alt={user.displayName || "User"}
-                    className="w-30 h-30 rounded-full border-2 border-amber-600 dark:border-amber-500 flex-shrink-0"
+                    className="w-30 h-30 rounded-full border-2 border-amber-600 dark:border-amber-500 "
                     referrerPolicy="no-referrer"
                   />
                         </div>

@@ -56,13 +56,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 border-t border-gray-200 dark:border-gray-800 mt-auto">
+    <footer className="relative bg-linear-to-b from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 border-t border-gray-200 dark:border-gray-800 mt-auto">
       {/* Top decorative border */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500"></div>
+      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-amber-500 via-orange-500 to-amber-500"></div>
       
       {/* Newsletter Section */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-12 pb-8">
-        <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-8 shadow-xl mb-8">
+        <div className="bg-linear-to-r from-amber-500 to-orange-500 rounded-2xl p-8 shadow-xl mb-8">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
               <h3 className="text-2xl font-bold text-white mb-2">
@@ -79,7 +79,7 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-amber-200 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/50 text-white placeholder-amber-50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
                   required
                 />
               </div>
@@ -104,7 +104,7 @@ const Footer = () => {
                   src={logo}
                   alt="Bill Pie Logo"
                 />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
+                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-linear-to-r from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
                   <span className="text-xs font-bold text-white">✓</span>
                 </div>
               </div>
@@ -276,7 +276,7 @@ const Footer = () => {
       {/* Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center z-50"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-linear-to-r from-amber-500 to-orange-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center z-50"
         aria-label="Back to top"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

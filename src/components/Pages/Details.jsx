@@ -389,7 +389,7 @@ const Details = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen bg-linear-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-6xl mx-auto">
         {/* Header with Back Button */}
@@ -435,7 +435,7 @@ const Details = () => {
           <motion.div variants={itemVariants} className="lg:col-span-2 space-y-8">
             {/* Bill Image Card */}
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-blue-500/20 dark:from-amber-600/10 dark:to-blue-600/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
+              <div className="absolute inset-0 bg-linear-to-r from-amber-500/20 to-blue-500/20 dark:from-amber-600/10 dark:to-blue-600/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500" />
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                 <img
                   className="w-full h-80 md:h-96 object-cover transform group-hover:scale-105 transition-transform duration-500"
@@ -445,7 +445,7 @@ const Details = () => {
                     e.target.src = `https://via.placeholder.com/800x400/FFD54F/374151?text=${bill.category}+Bill`;
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg">
                     {bill.title}
@@ -593,7 +593,7 @@ const Details = () => {
 
                 <button
                   onClick={() => setShowPaymentInfo(!showPaymentInfo)}
-                  className="w-full flex items-center justify-between p-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl transition-all duration-300 group"
+                  className="w-full flex items-center justify-between p-4 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl transition-all duration-300 group"
                 >
                   <span>Make Payment</span>
                   <FaChevronDown className={`transform transition-transform ${showPaymentInfo ? 'rotate-180' : ''}`} />
@@ -627,7 +627,7 @@ const Details = () => {
                           disabled={!isPayable}
                           className={`w-full mt-4 py-3 font-bold rounded-xl transition-all ${
                             isPayable
-                              ? `bg-gradient-to-r ${getCategoryColor(bill.category)} text-white hover:shadow-lg hover:scale-[1.02]`
+                              ? `bg-linear-to-r ${getCategoryColor(bill.category)} text-white hover:shadow-lg hover:scale-[1.02]`
                               : "bg-gray-300 dark:bg-gray-700 text-gray-400 dark:text-gray-500 cursor-not-allowed"
                           }`}
                         >
@@ -701,7 +701,7 @@ const Details = () => {
             </div>
 
             {/* Important Notes Card */}
-            <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl shadow-xl p-6 border border-amber-200 dark:border-amber-800">
+            <div className="bg-linear-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl shadow-xl p-6 border border-amber-200 dark:border-amber-800">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                 <FaExclamationTriangle className="text-amber-600 dark:text-amber-400" />
                 Important Notes
@@ -734,7 +734,7 @@ const Details = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="mt-8 p-6 bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-700 dark:to-amber-800 rounded-2xl shadow-lg"
+          className="mt-8 p-6 bg-linear-to-r from-amber-500 to-amber-600 dark:from-amber-700 dark:to-amber-800 rounded-2xl shadow-lg"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-white">
@@ -774,7 +774,7 @@ const Details = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header - More Compact */}
-        <div className="p-4 bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-700">
+        <div className="p-4 bg-linear-to-r from-amber-500 to-amber-600 dark:from-amber-600 dark:to-amber-700">
           <div className="flex justify-between items-center">
             <div>
               <h3 className="font-bold text-base text-white">
@@ -897,7 +897,7 @@ const Details = () => {
             <button 
               type="submit" 
               disabled={processingPayment}
-              className="px-4 py-1.5 text-sm bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-1.5 text-sm bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {processingPayment ? (
                 <div className="flex items-center gap-1.5">

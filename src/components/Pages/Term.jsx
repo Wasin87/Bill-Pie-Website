@@ -61,7 +61,7 @@ const Term = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Back Button */}
         <div className="mb-6">
@@ -81,7 +81,7 @@ const Term = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl">
+            <div className="p-3 bg-linear-to-r from-amber-500 to-orange-500 rounded-xl">
               <FaFileContract className="text-2xl text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -132,7 +132,7 @@ const Term = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 mb-8 border border-amber-200 dark:border-amber-800"
+          className="bg-linear-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 mb-8 border border-amber-200 dark:border-amber-800"
         >
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <FaExclamationTriangle className="text-amber-600 dark:text-amber-400" />
@@ -186,7 +186,7 @@ const Term = () => {
                 className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-colors ${
                   accepted 
                     ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white'
+                    : 'bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white'
                 }`}
               >
                 <FaCheckCircle />

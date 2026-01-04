@@ -96,7 +96,7 @@ const MyPayBills = () => {
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
     
-    // Add header with gradient effect
+    // Add header with linear effect
     doc.setFillColor(245, 158, 11); // Amber color
     doc.rect(0, 0, pageWidth, 40, 'F');
     
@@ -257,7 +257,7 @@ const MyPayBills = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <motion.div
@@ -295,7 +295,7 @@ const MyPayBills = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
         >
           {/* Total Paid Card */}
-          <div className="bg-gradient-to-r from-amber-500 to-amber-600 rounded-2xl p-6 text-white shadow-xl">
+          <div className="bg-linear-to-r from-amber-500 to-amber-600 rounded-2xl p-6 text-white shadow-xl">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <p className="text-sm font-medium text-amber-100">Total Paid</p>
@@ -525,7 +525,7 @@ const MyPayBills = () => {
               ) : (
                 <Link
                   to="/allBills"
-                  className="inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-xl transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-2 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-xl transition-colors"
                 >
                   <FaFileInvoiceDollar />
                   Pay Your First Bill
@@ -554,7 +554,7 @@ const MyPayBills = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal Header */}
-                <div className="bg-gradient-to-r from-amber-500 to-amber-600 p-6">
+                <div className="bg-linear-to-r from-amber-500 to-amber-600 p-6">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-white/20 rounded-lg">
@@ -642,7 +642,7 @@ const MyPayBills = () => {
                     {/* Right Column */}
                     <div className="space-y-6">
                       {/* Payment Details */}
-                      <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-5 border border-green-200 dark:border-green-800">
+                      <div className="bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-5 border border-green-200 dark:border-green-800">
                         <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                           <MdPaid className="text-green-500" />
                           Payment Details
@@ -709,7 +709,7 @@ const MyPayBills = () => {
                     </button>
                     <button
                       onClick={() => handleDownloadPDF(selectedBill)}
-                      className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl font-semibold transition-colors"
+                      className="flex items-center gap-2 px-5 py-2.5 bg-linear-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-xl font-semibold transition-colors"
                     >
                       <FaDownload />
                       Download PDF

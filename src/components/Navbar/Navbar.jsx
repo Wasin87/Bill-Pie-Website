@@ -6,6 +6,7 @@ import { FaMoon, FaSun, FaBars, FaUserCircle, FaSignOutAlt, FaHome, FaChartBar, 
 import Swal from "sweetalert2";
  
 import { FiDollarSign } from "react-icons/fi";
+import { FileText } from "lucide-react";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -69,15 +70,15 @@ const Navbar = () => {
 
   // All navigation links for desktop - Limited to 4-5 items
   const allNavLinks = [
-    { to: "/", label: "Home", icon: <FaHome className="w-4 h-4 flex-shrink-0" /> },
-    { to: "/allBills", label: "Bills", icon: <FaFileInvoiceDollar className="w-4 h-4 flex-shrink-0" /> },
+    { to: "/", label: "Home", icon: <FaHome className="w-4 h-4 " /> },
+    { to: "/allBills", label: "Bills", icon: <FaFileInvoiceDollar className="w-4 h-4 " /> },
     ...(user ? [
-      { to: "/myPayBil", label: "My Bills", icon: <FaUserCircle className="w-4 h-4 flex-shrink-0" /> },
-      { to: "/dashboard", label: "Dashboard", icon: <FaChartBar className="w-4 h-4 flex-shrink-0" /> }
+      { to: "/myPayBil", label: "My Bills", icon: <FaUserCircle className="w-4 h-4 " /> },
+      { to: "/dashboard", label: "Dashboard", icon: <FaChartBar className="w-4 h-4 " /> }
     ] : []),
-    { to: "/about", label: "About", icon: <FaInfoCircle className="w-4 h-4 flex-shrink-0" /> },
-    { to: "/utilities", label: "Utilities", icon: <FiDollarSign className="w-4 h-4 flex-shrink-0" /> },
-    { to: "/features", label: "Features", icon: <FiDollarSign className="w-4 h-4 flex-shrink-0" /> },
+    { to: "/about", label: "About", icon: <FaInfoCircle className="w-4 h-4 " /> },
+    { to: "/utilities", label: "Utilities", icon: <FiDollarSign className="w-4 h-4 " /> },
+    { to: "/features", label: "Features", icon: <FileText className="w-4 h-4 " /> },
      
   ].slice(0, 5); // Limit to maximum 5 items
 
@@ -87,7 +88,8 @@ const Navbar = () => {
   const profileMenuItems = [
     { to: "/profile", label: "Profile", icon: <FaUserCircle className="mr-2 w-4 h-4" /> },
     { to: "/dashboard", label: "Dashboard", icon: <FaChartBar className="mr-2 w-4 h-4" /> },
-    { to: "/myPayBil", label: "My Bills", icon: <FaFileInvoiceDollar className="mr-2 w-4 h-4" /> },
+    { to: "/utilities", label: "Utilities", icon: <FiDollarSign className="w-4 h-4 " /> },
+    { to: "/features", label: "Features", icon: <FileText className="w-4 h-4 " /> },
   ];
 
   return (
@@ -96,12 +98,12 @@ const Navbar = () => {
         {/* MAIN NAVBAR ROW - Everything in one line */}
         <div className="flex items-center justify-between h-16">
           {/* Left: Logo with Name */}
-          <div className="flex items-center flex-shrink-0">
+          <div className="flex items-center ">
             <Link to="/" className="flex items-center space-x-2">
               <img
                 src={logo}
                 alt="Bill Pie Logo"
-                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-amber-100 dark:bg-gray-700 p-1 border-2 border-amber-700 dark:border-amber-500 flex-shrink-0"
+                className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-amber-100 dark:bg-gray-700 p-1 border-2 border-amber-700 dark:border-amber-500 "
               />
               <span className="text-base md:text-lg lg:text-xl font-bold text-gray-900 dark:text-white whitespace-nowrap">
                 Bill <span className="text-amber-800 dark:text-amber-400">Pie</span>
@@ -113,7 +115,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center justify-center flex-1 px-4">
             <ul className="flex items-center space-x-1 flex-wrap justify-center">
               {allNavLinks.map((link) => (
-                <li key={link.to} className="flex-shrink-0">
+                <li key={link.to} className="">
                   <NavLink
                     to={link.to}
                     className={({ isActive }) =>
@@ -136,7 +138,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center justify-center flex-1 px-2 overflow-hidden">
             <ul className="flex items-center space-x-1">
               {mobileCenterLinks.map((link) => (
-                <li key={link.to} className="flex-shrink-0">
+                <li key={link.to} className="">
                   <NavLink
                     to={link.to}
                     className={({ isActive }) =>
@@ -156,11 +158,11 @@ const Navbar = () => {
           </div>
 
           {/* Right: Actions Section */}
-          <div className="flex items-center space-x-2 md:space-x-3 flex-shrink-0">
+          <div className="flex items-center space-x-2 md:space-x-3 ">
             {/* Theme Toggle */}
             <button
               onClick={handleThemeToggle}
-              className="p-1.5 md:p-2 rounded-full hover:bg-amber-300 dark:hover:bg-gray-700 transition-colors duration-200 flex-shrink-0"
+              className="p-1.5 md:p-2 rounded-full hover:bg-amber-300 dark:hover:bg-gray-700 transition-colors duration-200 "
               aria-label="Toggle theme"
             >
               {theme === "night" ? (
@@ -175,17 +177,17 @@ const Navbar = () => {
               <div className="hidden md:block relative" ref={profileDropdownRef}>
                 <button
                   onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                  className="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-amber-300 dark:hover:bg-gray-700 transition-colors duration-200 flex-shrink-0"
+                  className="flex items-center space-x-2 p-1.5 rounded-lg hover:bg-amber-300 dark:hover:bg-gray-700 transition-colors duration-200 "
                   aria-label="User menu"
                 >
                   <img
-                    src={user.photoURL || "https://via.placeholder.com/150"}
+                    src={user.photoURL || "https://ui-avatars.com/api/?name=" + encodeURIComponent(user.displayName || "User") + "&background=amber-500&color=fff"}
                     alt={user.displayName || "User"}
-                    className="w-8 h-8 rounded-full border-2 border-amber-600 dark:border-amber-500 flex-shrink-0"
+                    className="w-8 h-8 rounded-full border-2 border-amber-600 dark:border-amber-500 "
                     referrerPolicy="no-referrer"
                   />
                   <div className="text-left hidden lg:block">
-                    <p className="text-xs font-semibold text-gray-800 dark:text-white truncate max-w-[80px] whitespace-nowrap">
+                    <p className="text-xs font-semibold text-gray-800 dark:text-white truncate max-w-[85px] whitespace-nowrap">
                       {user.displayName?.split(' ')[0] || "User"}
                     </p>
                   </div>
@@ -218,14 +220,14 @@ const Navbar = () => {
                       onClick={handleSignOut}
                       className="flex items-center w-full px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-gray-700 transition-colors duration-150 whitespace-nowrap"
                     >
-                      <FaSignOutAlt className="mr-2 flex-shrink-0" />
+                      <FaSignOutAlt className="mr-2 " />
                       Sign Out
                     </button>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="hidden md:flex items-center space-x-2 flex-shrink-0">
+              <div className="hidden md:flex items-center space-x-2 ">
                 <Link
                   to="/login"
                   className="px-3 py-1.5 text-sm font-medium text-gray-800 dark:text-white bg-transparent border border-amber-600 rounded-lg hover:bg-amber-500 hover:text-white dark:hover:bg-amber-700 transition-colors duration-200 whitespace-nowrap"
@@ -243,7 +245,7 @@ const Navbar = () => {
 
             {/* Mobile User Profile */}
             {user && (
-              <div className="md:hidden flex items-center space-x-1 flex-shrink-0">
+              <div className="md:hidden flex items-center space-x-1 ">
                 <div className="text-right hidden xs:block">
                   <p className="text-xs font-semibold text-gray-800 dark:text-white truncate max-w-[60px] whitespace-nowrap">
                     {user.displayName?.split(' ')[0] || "User"}
@@ -252,7 +254,7 @@ const Navbar = () => {
                 <img
                   src={user.photoURL || "https://via.placeholder.com/150"}
                   alt={user.displayName || "User"}
-                  className="w-7 h-7 rounded-full border-2 border-amber-600 dark:border-amber-500 flex-shrink-0"
+                  className="w-7 h-7 rounded-full border-2 border-amber-600 dark:border-amber-500 "
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -261,7 +263,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-1.5 md:p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-amber-300 dark:hover:bg-gray-700 mobile-menu-btn flex-shrink-0"
+              className="md:hidden p-1.5 md:p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-amber-300 dark:hover:bg-gray-700 mobile-menu-btn "
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? (

@@ -157,7 +157,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
@@ -182,7 +182,7 @@ const Profile = () => {
               animate={{ opacity: 1, x: 0 }}
               className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden"
             >
-              <div className="relative h-32 bg-gradient-to-r from-amber-500 to-orange-500">
+              <div className="relative h-32 bg-linear-to-r from-amber-500 to-orange-500">
                 <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
                   <div className="relative">
                     {formData.photo ? (
@@ -193,7 +193,7 @@ const Profile = () => {
                         referrerPolicy="no-referrer"
                       />
                     ) : (
-                      <div className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 bg-gradient-to-r from-blue-500 to-cyan-500 flex items-center justify-center shadow-xl">
+                      <div className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 bg-linear-to-r from-blue-500 to-cyan-500 flex items-center justify-center shadow-xl">
                         <span className="text-4xl font-bold text-white">
                           {getInitial(formData.name)}
                         </span>
@@ -231,7 +231,7 @@ const Profile = () => {
                 {!editMode && (
                   <button
                     onClick={() => setEditMode(true)}
-                    className="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+                    className="w-full py-3 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <FiEdit2 />
                     Edit Profile
@@ -290,7 +290,7 @@ const Profile = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl shadow-xl p-6 text-white"
+              className="bg-linear-to-r from-amber-500 to-orange-500 rounded-2xl shadow-xl p-6 text-white"
             >
               <h3 className="text-lg font-bold mb-2">Account Security</h3>
               <p className="text-amber-100 text-sm mb-4">
@@ -485,7 +485,7 @@ const Profile = () => {
                     <button
                       type="submit"
                       disabled={uploading}
-                      className="px-8 py-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="px-8 py-3 bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl transition-all duration-300 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {uploading ? (
                         <>

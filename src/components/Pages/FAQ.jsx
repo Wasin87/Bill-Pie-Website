@@ -132,7 +132,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-amber-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Back Button */}
         <div className="mb-6">
@@ -152,7 +152,7 @@ const FAQ = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 rounded-xl">
+            <div className="p-3 bg-linear-to-r from-amber-500 to-orange-500 rounded-xl">
               <FaQuestionCircle className="text-2xl text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -208,7 +208,7 @@ const FAQ = () => {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all ${
                   activeCategory === category.id
-                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg'
+                    ? 'bg-linear-to-r from-amber-500 to-amber-600 text-white shadow-lg'
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow hover:shadow-md'
                 }`}
               >
@@ -330,7 +330,7 @@ const FAQ = () => {
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
           {/* Still Need Help */}
-          <div className="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 text-white">
+          <div className="bg-linear-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 text-white">
             <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
               <FaExclamationCircle />
               Still Need Help?
@@ -347,7 +347,7 @@ const FAQ = () => {
           </div>
 
           {/* Tips */}
-          <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800">
+          <div className="bg-linear-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
               <FaLightbulb className="text-amber-600 dark:text-amber-400" />
               Quick Tips

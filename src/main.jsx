@@ -26,7 +26,9 @@ import Security from './components/Pages/Security.jsx';
 import Cookies from './components/Pages/Cookies.jsx';
 import Utilities from './components/Pages/Utilities.jsx';
 import Features from './components/Pages/Features.jsx';
- 
+import LoadingSpinner from './components/Pages/LoadingSpinner.jsx';
+
+
  
 
 const router = createBrowserRouter([
@@ -34,83 +36,42 @@ const router = createBrowserRouter([
     path: "/",
     Component: RootLayouts,
     children: [
-      {
-        index: true,
-        Component: Home
-      },
-      {
-        path: "allBills",
-        Component: AllBills
-      },
-      {
-        path: "register",
-        Component: Register
-      },
-      {
-        path: "login",
-        Component: Login
-      },
-      {
-        path: "utilities",
-        Component: Utilities
-      },
-      {
-        path: "features",
-        Component: Features
-      },
-      {
-        path: "myPayBil",
-        Component: MyPayBill
-      },
-      {
-        path: "profile",
-        Component: Profile
-      },
-      {
-        path: "details",
-        Component: Details
-      },
-      {
-        path: "about",
-        Component: About
-      },
-      {
-        path: "dashboard",
-        Component: Dashboard
-      },
-      {
-        path: "terms",
-        Component: Term
-      },
-      {
-        path: "help",
-        Component: Help
-      },
-      {
-        path: "faq",
-        Component: FAQ
-      },
-      {
-        path: "customer-support",
-        Component: Customer
-      },
-      {
-        path: "privacy",
-        Component: Privacy
-      },
-      {
-        path: "security",
-        Component: Security
-      },
-      {
-        path: "cookies",
-        Component: Cookies
-      },
- 
-      {
-        path: "*",
-        element: <ErrorPage />  
-      }
+      { index: true, Component: Home },
+      { path: "allBills",
+         Component: AllBills },
+      { path: "register", 
+        Component: Register },
+      { path: "login", 
+        Component: Login },
+      { path: "utilities", 
+        Component: Utilities },
+      { path: "features", 
+        Component: Features },
+      { path: "myPayBil", 
+        Component: MyPayBill },
+      { path: "profile", 
+        Component: Profile },
+      { path: "details", 
+        Component: Details },
+      { path: "about", 
+        Component: About },
+      { path: "dashboard", 
+        Component: Dashboard },
+      { path: "terms", 
+        Component: Term },
+      { path: "help", 
+        Component: Help },
+      { path: "faq", 
+        Component: FAQ },
+      { path: "customer-support", 
+        Component: Customer },
+      { path: "privacy", 
+        Component: Privacy },
+      { path: "security", 
+        Component: Security },
+      { path: "cookies", 
+        Component: Cookies },
+      { path: "*", element: <ErrorPage /> }
     ]
   }
 ]);
@@ -118,7 +79,10 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <RouterProvider
+        router={router}
+        fallbackElement={<LoadingSpinner />}
+      />
       <ToastContainer />
     </AuthProvider>
   </StrictMode>

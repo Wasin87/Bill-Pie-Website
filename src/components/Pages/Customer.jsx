@@ -132,7 +132,7 @@ const Customer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Back Button */}
         <div className="mb-6">
@@ -152,7 +152,7 @@ const Customer = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl">
+            <div className="p-3 bg-linear-to-r from-blue-500 to-cyan-500 rounded-xl">
               <MdSupportAgent className="text-2xl text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -214,7 +214,7 @@ const Customer = () => {
               onClick={() => setActiveTab('contact')}
               className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${
                 activeTab === 'contact'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -225,7 +225,7 @@ const Customer = () => {
               onClick={() => setActiveTab('teams')}
               className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${
                 activeTab === 'teams'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -236,7 +236,7 @@ const Customer = () => {
               onClick={() => setActiveTab('live')}
               className={`px-6 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${
                 activeTab === 'live'
-                  ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
+                  ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg'
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -408,7 +408,7 @@ const Customer = () => {
                       <button
                         type="submit"
                         disabled={submitting}
-                        className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {submitting ? (
                           <>
@@ -514,7 +514,7 @@ const Customer = () => {
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-800">
+                  <div className="bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl p-6 border border-green-200 dark:border-green-800">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-xl">
                         <FaWhatsapp className="text-2xl text-green-600 dark:text-green-400" />
@@ -542,7 +542,7 @@ const Customer = () => {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800">
+                  <div className="bg-linear-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-800">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
                         <FaComments className="text-2xl text-blue-600 dark:text-blue-400" />
@@ -572,7 +572,7 @@ const Customer = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800">
+                <div className="bg-linear-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800">
                   <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                     <FaVideo className="text-amber-600 dark:text-amber-400" />
                     Video Call Support
@@ -606,7 +606,7 @@ const Customer = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 text-white"
+          className="bg-linear-to-r from-blue-500 to-cyan-500 rounded-2xl p-6 text-white"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center gap-4">

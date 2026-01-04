@@ -147,7 +147,7 @@ const Utilities = () => {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
           Utility <span className="text-amber-500 dark:text-amber-400">Categories</span>
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">

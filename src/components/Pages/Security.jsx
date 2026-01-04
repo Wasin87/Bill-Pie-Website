@@ -109,7 +109,7 @@ const Security = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Back Button */}
         <div className="mb-6">
@@ -129,7 +129,7 @@ const Security = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl">
+            <div className="p-3 bg-linear-to-r from-green-500 to-emerald-500 rounded-xl">
               <MdSecurity className="text-2xl text-white" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
@@ -159,7 +159,7 @@ const Security = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-6 text-white mb-8"
+          className="bg-linear-to-r from-green-500 to-emerald-500 rounded-2xl p-6 text-white mb-8"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
@@ -305,7 +305,7 @@ const Security = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800"
+            className="bg-linear-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-2xl p-6 border border-amber-200 dark:border-amber-800"
           >
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
               <MdWarning className="text-amber-600 dark:text-amber-400" />

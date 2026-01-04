@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from "../../assets/logo.png";
 import { 
   PieChart, 
   Bell, 
@@ -203,17 +204,21 @@ const Features = () => {
     : features.filter(feature => feature.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-amber-50 to-amber-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center mb-4">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-2xl shadow-lg">
-              <PieChart className="w-10 h-10 text-white" />
-            </div>
-            <h1 className="ml-4 text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Bill Pie
-            </h1>
+            
+                            <img
+                              src={logo}
+                              alt="Bill Pie Logo"
+                              className="w-20 h-20 md:w-20 md:h-20 rounded-full bg-amber-100 dark:bg-gray-700 p-1 border-2 border-amber-700 dark:border-amber-500 "
+                            />
+             
+              <span className="text-2xl  font-bold text-gray-900 dark:text-white whitespace-nowrap ml-2">
+                Bill <span className="text-amber-800 dark:text-amber-400 ">Pie</span>
+              </span>
           </div>
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
             Smart Bill Management Features
@@ -232,7 +237,7 @@ const Features = () => {
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
                 className={`px-5 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === category.id 
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-105' 
+                  ? 'bg-linear-to-r from-amber-600 to-yellow-600 text-white shadow-lg transform scale-105' 
                   : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md'
                 }`}
               >
@@ -249,10 +254,10 @@ const Features = () => {
               key={feature.id}
               className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 group"
             >
-              <div className={`h-2 bg-gradient-to-r ${feature.color}`}></div>
+              <div className={`h-2 bg-linear-to-r ${feature.color}`}></div>
               <div className="p-6">
                 <div className="flex items-start mb-4">
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${feature.color} mr-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`p-3 rounded-xl bg-linear-to-br ${feature.color} mr-4 group-hover:scale-110 transition-transform duration-300`}>
                     <div className="text-white">
                       {feature.icon}
                     </div>
@@ -266,7 +271,7 @@ const Features = () => {
                 <ul className="space-y-2 mt-4">
                   {feature.details.map((detail, index) => (
                     <li key={index} className="flex items-center text-gray-700 dark:text-gray-300">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2 " />
                       <span>{detail}</span>
                     </li>
                   ))}
@@ -277,7 +282,7 @@ const Features = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-16">
+        <div className="bg-linear-to-r from-amber-600 to-amber-400 rounded-2xl p-8 text-white mb-16">
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold mb-4">Why Choose Bill Pie?</h3>
             <p className="text-blue-100 max-w-2xl mx-auto">
@@ -288,18 +293,18 @@ const Features = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">98%</div>
-              <div className="text-blue-200">User Satisfaction</div>
-              <p className="text-sm text-blue-100 mt-2">Based on customer feedback</p>
+              <div className="text-gray-100">User Satisfaction</div>
+              <p className="text-sm text-gray-700 mt-2">Based on customer feedback</p>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">50K+</div>
-              <div className="text-blue-200">Active Users</div>
-              <p className="text-sm text-blue-100 mt-2">Managing bills worldwide</p>
+              <div className="text-gray-100">Active Users</div>
+              <p className="text-sm text-gray-700 mt-2">Managing bills worldwide</p>
             </div>
             <div className="text-center">
               <div className="text-5xl font-bold mb-2">$10M+</div>
-              <div className="text-blue-200">Bills Managed Monthly</div>
-              <p className="text-sm text-blue-100 mt-2">Across all user accounts</p>
+              <div className="text-gray-100">Bills Managed Monthly</div>
+              <p className="text-sm text-gray-700 mt-2">Across all user accounts</p>
             </div>
           </div>
         </div>
@@ -312,14 +317,7 @@ const Features = () => {
           <p className="text-gray-600 dark:text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
             Start your free 30-day trial. No credit card required. Cancel anytime.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-              Start Free Trial
-            </button>
-            <button className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white font-bold rounded-xl shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300">
-              Schedule a Demo
-            </button>
-          </div>
+ 
           <p className="text-gray-500 dark:text-gray-400 text-sm mt-6">
             All features included in trial • No setup fees • 24/7 support
           </p>
